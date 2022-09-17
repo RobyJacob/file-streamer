@@ -73,7 +73,7 @@ class FileWatcher:
             last_processed_time = datetime.datetime.now()
 
         while True:
-            while (datetime.datetime.now() - last_processed_time).seconds < 30:
+            while (datetime.datetime.now() - last_processed_time).seconds < 300:
                 pass
 
             cls._add_latest_file(base_path, prefix="transactions")
