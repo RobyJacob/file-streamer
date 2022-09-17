@@ -36,15 +36,13 @@ class Transactions:
         from products import Products
 
         last_nth_day = datetime.datetime.now() - datetime.timedelta(days=int(last_n_days))
-        summary, product_city_map = dict(), dict()
+        summary= dict()
 
         for id, data in Transactions.get_transactions().items():
             if data.get("transactionDatetime") >= last_nth_day:
                 product_id = data.get("productId")
 
                 agg_key = Products.get_product(product_id).get("productManufacturingCity")
-
-                product_city_map[product_id] = agg_key
 
                 if agg_key not in summary:
                     summary[agg_key] = data.get("transactionAmount")
